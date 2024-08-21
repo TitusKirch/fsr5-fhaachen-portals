@@ -3,11 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Event;
-use App\Models\Group;
 use App\Models\Registration;
-use App\Models\Slot;
 use App\Models\User;
-use DateTime;
 use Illuminate\Database\Seeder;
 
 class FixEventsGerolsteinSeeder extends Seeder

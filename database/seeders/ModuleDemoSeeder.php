@@ -17,14 +17,14 @@ class ModuleDemoSeeder extends Seeder
                 'key' => 'registration',
                 'active' => true,
             ],
-            [
-                'key' => 'randomGenerator',
-                'active' => true,
-            ],
-            [
-                'key' => 'scoreSystem',
-                'active' => true,
-            ],
+            // [
+            //     'key' => 'randomGenerator',
+            //     'active' => true,
+            // ],
+            // [
+            //     'key' => 'scoreSystem',
+            //     'active' => true,
+            // ],
         ];
 
         foreach ($modules as $module) {

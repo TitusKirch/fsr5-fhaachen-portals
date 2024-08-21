@@ -1,0 +1,40 @@
+version: "3.9"
+
+volumes:
+  postgres-volume:
+    driver: local
+  valkey-volume:
+    driver: local
+
+services:
+  postgres:
+    image: "postgres:16.3"
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: "laravel"
+      POSTGRES_PASSWORD: "laravel"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U laravel"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - "postgres-volume:/var/lib/postgresql/data"
+
+  valkey:
+    image: "valkey/valkey:7.2-alpine"
+    restart: unless-stopped
+    command: --port 6379
+    ports:
+      - "6379:6379"
+    expose:
+      - "6379"
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      retries: 3
+      timeout: 5s
+    volumes:
+      - "valkey-volume:/data"
