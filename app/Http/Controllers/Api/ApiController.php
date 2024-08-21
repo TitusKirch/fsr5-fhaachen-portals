@@ -325,10 +325,8 @@ class ApiController extends Controller
     /**
      * Generate a presigned URL for avatar upload
      */
-    public function generatePresignedUrlForAvatarUpload(Request $request): JsonResponse
+    public function generatePresignedUrlForAvatarUpload(Request $request, User $user): JsonResponse
     {
-        $user = User::find($request->user);
-
         $request->validate([
             'avatar' => 'required|image',
         ]);
